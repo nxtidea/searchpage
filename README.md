@@ -1,5 +1,7 @@
 # searchpage
 
+[English](README_en.md)
+
 个人使用的聚合搜索页面。
 
 ## 特点
