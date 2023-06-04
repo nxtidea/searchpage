@@ -1,6 +1,6 @@
 # searchpage
 
-Aggregated search pages for personal use.
+Self-use aggregated search page.
 
 ## Features
 
