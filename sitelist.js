@@ -1,14 +1,3 @@
-/*
-site数组中元素对象的说明：
-{
-    "name": "站点名称",
-    "search": "搜索模板字符串",
-    "description": "站点描述，鼠标放在对应按钮上显示。为空时不显示。",
-    "home": "网站主页，在搜索框为空的情况下点击跳转。此项为空时将尝试从search中提取主页"
-},
-
-*/
-
 const group_data = [
     {
         "name": "网页",
@@ -163,7 +152,8 @@ const group_data = [
             },
             {
                 "name": "维基中文",
-                "search": "https://www.wikiwand.com/zh-hans/%s"
+                "search": "https://www.wikiwand.com/zh-hans/%s",
+                "home": "https://zh.wikipedia.org/wiki/Portal:%E7%9B%AE%E5%BD%95"
             },
             {
                 "name": "萌百",
@@ -584,6 +574,12 @@ const group_data = [
                     "https://github.com/ChirmyRam/ChirmyRam-OneDrive-Repository",
                 ],
                 "description": "多个Alist站点聚合搜索"
+            },
+            {
+                "name": "阮一峰",
+                "search": "https://github.com/search?q=repo%3Aruanyf%2Fweekly+%s&type=code",
+                "home": "https://github.com/ruanyf/weekly",
+                "description": ""
             },
         ]
     },

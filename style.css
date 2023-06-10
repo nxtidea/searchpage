@@ -4,7 +4,7 @@
     --main-color: rgb(202, 202, 202);
     --second-color: rgb(100, 100, 100);
     --background-color: rgb(28, 28, 28);
-    /*            font-size: 15px;*/
+    /* --hover-color: rgb(100, 158, 192); */
     box-sizing: border-box;
 }
 
@@ -13,6 +13,7 @@
         --main-color: rgb(65, 65, 65);
         --second-color: rgb(104, 104, 104);
         --background-color: rgb(255, 255, 255);
+        /* --hover-color: rgb(207, 44, 58); */
     }
 }
 
@@ -71,6 +72,6 @@ html {
 }
 
 .sitebtn:hover {
-    background-color: var(--main-color);
     color: var(--background-color);
+    background-color: var(--main-color);
 }
