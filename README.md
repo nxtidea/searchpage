@@ -3,6 +3,7 @@
 
 独特而易用的导航页/聚合搜索页面，没找到合用的导航页所以自己写了一个。
 
+[在线体验](https://nxtidea.github.io/searchpage/)
 
 ## 特性
 
