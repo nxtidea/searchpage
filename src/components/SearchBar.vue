@@ -59,6 +59,7 @@ onMounted(() => {
         height: calc(1.6rem + 0.2rem);
         border-color: var(--focus-color);
         color: var(--focus-color);
+        font-size: calc(1rem + 0.1rem);
     }
 }
 </style>

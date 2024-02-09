@@ -23,7 +23,7 @@ const configStore = useConfigStore();
 function onAppContextMenu(e: MouseEvent) {
   e.preventDefault();
   ContextMenu.showContextMenu({
-    theme: "dark",
+    theme: window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light",
     x: e.x,
     y: e.y,
     items: [

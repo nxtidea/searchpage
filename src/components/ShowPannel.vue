@@ -10,12 +10,11 @@
         <hr class="Separator" />
         <div class="siteContainer">
             <!-- <TransitionGroup name="sitelist"> -->
-                <span class="site" v-for="site in configStore.filteredSites" :key="site.title"
-                    @click="handleSiteClick(site)" @contextmenu="onTagContextMenu($event, site)"
-                    :class="{ nosearch: site.searchStr === '' && !configStore.isSearchTextEmpty }"
-                    :title="site.description">
-                    {{ site.title }}
-                </span>
+            <span class="site" v-for="site in configStore.filteredSites" :key="site.title" @click="handleSiteClick(site)"
+                @contextmenu="onTagContextMenu($event, site)"
+                :class="{ nosearch: site.searchStr === '' && !configStore.isSearchTextEmpty }" :title="site.description">
+                {{ site.title }}
+            </span>
             <!-- </TransitionGroup> -->
         </div>
     </div>
@@ -26,12 +25,13 @@ import { useConfigStore, type Site } from '@/stores/config';
 import ContextMenu from '@imengyu/vue3-context-menu'
 const configStore = useConfigStore();
 
+
 function onTagContextMenu(e: MouseEvent, site: Site) {
     e.preventDefault();
     e.stopPropagation();
     let favoriteLabel = site.favorite ? "取消收藏" : "添加收藏";
     ContextMenu.showContextMenu({
-        theme: "dark",
+        theme: window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light",
         x: e.x,
         y: e.y,
         items: [
@@ -131,10 +131,12 @@ const callSearchForSite = (site: Site) => {
 
         &:hover {
             border: 1px solid var(--accent-color);
+            color: var(--accent-color);
         }
 
         &.selected {
             border: 1px solid var(--accent-color);
+            font-size: calc(1rem + 0.1rem);
             color: var(--accent-color);
         }
     }
