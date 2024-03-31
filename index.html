@@ -2,15 +2,71 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <!-- <link rel="icon" href="/favicon.ico"> -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Search</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NewTab</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <div id="app"></div>
-  <script type="module" src="/src/main.ts"></script>
+    <div v-scope @vue:mounted="initPage">
+        <div id="header">
+            <input id="searchbar" v-model="search_word">
+        </div>
+        <div id="container">
+            <div class="group" v-for="group in groups">
+                <div class="groupname">{{group.name}}</div>
+                <div class="groupcontent">
+                    <div class="sitebtn" v-for="site in group.sites" @click="callSite(site)" :title="site.description">
+                        {{site.name}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
+
+<script src="petite-vue"></script>
+<script src="sitelist.js"></script>
+<script>
+    PetiteVue.createApp({
+        search_word: '',
+        groups: group_data,
+        initPage() {
+            document.addEventListener('keydown', event => {
+                document.querySelector('#searchbar').focus();
+            })
+            document.querySelector('#searchbar').addEventListener('keydown', event => {
+                if (event.key === 'Enter') {
+                    window.open(`https://www.google.com/search?q=${this.search_word}`)
+                }
+            })
+        },
+        callSite(site) {
+            if (`${this.search_word}` === '') {
+                if (typeof site.home === 'undefined' || site.home === "") {
+                    if (typeof site.search !== 'object') {
+                        window.open(site.search.match(/https?:\/\/.*?\//g))
+                    }
+                } else {
+                    if (typeof site.home === 'object') {
+                        for (let home of site.home) {
+                            window.open(home)
+                        }
+                    } else {
+                        window.open(site.home)
+                    }
+                }
+            } else if (typeof site.search === 'object') {
+                for (let search of site.search) {
+                    window.open(search.replace(/\%s/, `${this.search_word}`))
+                }
+            } else {
+                window.open(site.search.replace(/\%s/, `${this.search_word}`))
+            }
+        }
+    }).mount()
+</script>
 
 </html>
